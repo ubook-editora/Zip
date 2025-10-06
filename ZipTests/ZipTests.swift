@@ -219,7 +219,7 @@ class ZipTests: XCTestCase {
 
     // Tests if https://github.com/marmelroy/Zip/issues/245 does not uccor anymore.
     func testUnzipProtectsAgainstPathTraversal() throws {
-        let filePath = url(forResource: "pathTraversal", withExtension: "zip")!
+        let filePath = try XCTUnwrap(url(forResource: "pathTraversal", withExtension: "zip"), "pathTraversal.zip resource not found")
         let destinationPath = try autoRemovingSandbox()
 
         do {
