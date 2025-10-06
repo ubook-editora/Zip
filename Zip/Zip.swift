@@ -68,7 +68,14 @@ public class Zip {
     /**
      Set of vaild file extensions
      */
-    internal static var customFileExtensions: Set<String> = []
+    private static let lock = NSLock()
+    private nonisolated(unsafe) static var _customFileExtensions: Set<String> = []
+    
+    internal static var customFileExtensions: Set<String> {
+        lock.lock()
+        defer { lock.unlock() }
+        return _customFileExtensions
+    }
     
     // MARK: Lifecycle
     
@@ -512,7 +519,9 @@ public class Zip {
      - parameter fileExtension: A file extension.
      */
     public class func addCustomFileExtension(_ fileExtension: String) {
-        customFileExtensions.insert(fileExtension)
+        lock.lock()
+        defer { lock.unlock() }
+        _customFileExtensions.insert(fileExtension)
     }
     
     /**
@@ -521,7 +530,9 @@ public class Zip {
      - parameter fileExtension: A file extension.
      */
     public class func removeCustomFileExtension(_ fileExtension: String) {
-        customFileExtensions.remove(fileExtension)
+        lock.lock()
+        defer { lock.unlock() }
+        _customFileExtensions.remove(fileExtension)
     }
     
     /**
