@@ -10,8 +10,8 @@ Pod::Spec.new do |s|
   s.name             = "Zip"
   s.version          = "2.2.0"
   s.summary          = "Zip and unzip files in Swift."
-  s.swift_version    = "5.3"
-  s.swift_versions   = ["4.2", "5.0", "5.1", "5.3"]
+  s.swift_version    = "6.0"
+  s.swift_versions   = ["4.2", "5.0", "5.1", "5.3", "6.0"]
 
 # This description is used to generate tags and improve search results.
 #   * Think: What does it do? Why did you write it? What is the focus?
@@ -22,11 +22,11 @@ Pod::Spec.new do |s|
                       A Swift framework for zipping and unzipping files. Simple and quick to use. Built on top of minizip.
                      DESC
 
-  s.homepage         = "https://github.com/marmelroy/Zip"
+  s.homepage         = "https://github.com/ubook-editora/Zip"
   s.license          = 'MIT'
-  s.author           = { "Roy Marmelstein" => "marmelroy@gmail.com" }
-  s.source           = { :git => "https://github.com/marmelroy/Zip.git", :tag => s.version.to_s}
-  s.social_media_url   = "http://twitter.com/marmelroy"
+  s.author           = { "Paulo Coutinho" => "paulocoutinhox@gmail.com" }
+  s.source           = { :git => "https://github.com/ubook-editora/Zip.git", :tag => s.version.to_s}
+  s.social_media_url   = "http://x.com/paulocoutinhox"
 
   s.ios.deployment_target = '13.0'
   s.tvos.deployment_target = '13.0'
