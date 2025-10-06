@@ -6,7 +6,7 @@
 //  Copyright © 2015 Roy Marmelstein. All rights reserved.
 //
 
-@import Foundation;
+#import <Foundation/Foundation.h>
 
 //! Project version number for Zip.
 FOUNDATION_EXPORT double ZipVersionNumber;

@@ -32,14 +32,22 @@ Pod::Spec.new do |s|
   s.tvos.deployment_target = '13.0'
   s.watchos.deployment_target = '6.0'
   s.osx.deployment_target = '11.0'
-  s.requires_arc = true
-
+  
   s.source_files = 'Zip/*.{swift,h}', 'Zip/minizip/*.c', 'Zip/minizip/include/*.h'
-  s.public_header_files = 'Zip/*.h', 'Zip/minizip/include/*.h'
-  s.pod_target_xcconfig = {
-    'SWIFT_INCLUDE_PATHS' => '$(PODS_TARGET_SRCROOT)/Zip/minizip/module',
-    'HEADER_SEARCH_PATHS' => '$(PODS_TARGET_SRCROOT)/Zip/minizip/include'
-  }
+  s.public_header_files = 'Zip/Zip.h'
+  s.private_header_files = 'Zip/minizip/include/*.h'
   s.libraries = 'z'
   s.preserve_paths = 'Zip/minizip/module/module.modulemap'
+  
+  s.xcconfig = {
+    'HEADER_SEARCH_PATHS' => '$(PODS_TARGET_SRCROOT)/Zip/minizip/include',
+    'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES'
+  }
+  s.pod_target_xcconfig = {
+    'SWIFT_INCLUDE_PATHS' => '$(PODS_TARGET_SRCROOT)/Zip/minizip/module',
+    'HEADER_SEARCH_PATHS' => '$(PODS_TARGET_SRCROOT)/Zip/minizip/include',
+    'CLANG_ALLOW_NON_MODULAR_INCLUDES_IN_FRAMEWORK_MODULES' => 'YES',
+    'DEFINES_MODULE' => 'YES',
+    'USE_HEADERMAP' => 'NO'
+  }
 end
